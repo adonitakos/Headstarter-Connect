@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import React from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Landing from './pages/Landing' 
+import SignUp from './pages/SignUp';
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Calendar from './pages/Calendar'
@@ -23,8 +24,12 @@ const router = createBrowserRouter([
         element: <Landing />
       },
       {
-        path: '/login',
+        path: '/auth/login',
         element: <Login />
+      },
+      {
+        path: '/auth/register',
+        element: <SignUp/>
       },
       {
         path: '/profile',
@@ -40,7 +45,7 @@ const router = createBrowserRouter([
       }
     ]
   }
-])
+]) // <--- router ends here
 
 function App() {
   return (

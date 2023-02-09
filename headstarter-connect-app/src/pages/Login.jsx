@@ -1,4 +1,4 @@
-// File: /src/pages/Login.js
+// File: /src/pages/Login.jsx
 
 import React from "react";
 import { AuthContainer, AuthBanner, AuthInput, AuthButton } from "../components/AuthElements";

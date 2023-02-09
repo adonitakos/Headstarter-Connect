@@ -1,4 +1,5 @@
-// File: /src/pages/Profile.js
+// File: /src/pages/Profile.jsx
+
 import Card from 'react-bootstrap/Card'
 
 function Profile() {

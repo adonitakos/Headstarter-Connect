@@ -1,4 +1,4 @@
-// File: /src/pages/VideoChat.js
+// File: /src/pages/VideoChat.jsx
 
 function VideoChat() {
     return (

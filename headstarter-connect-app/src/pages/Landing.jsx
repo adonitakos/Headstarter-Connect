@@ -1,4 +1,4 @@
-// File: /src/pages/Landing.js
+// File: /src/pages/Landing.jsx
 import Card from 'react-bootstrap/Card'
 
 function Landing() {
