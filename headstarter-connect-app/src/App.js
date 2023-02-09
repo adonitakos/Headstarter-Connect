@@ -2,6 +2,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import React from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Landing from './pages/Landing' 
+import Login from './pages/Login'
+import Profile from './pages/Profile'
+import Calendar from './pages/Calendar'
+import VideoChat from './pages/VideoChat'
+
 
 const HeaderLayout = () => (
   <>
@@ -16,6 +21,22 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Landing />
+      },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/calendar',
+        element: <Calendar />
+      },
+      {
+        path: '/video_chat',
+        element: <VideoChat />
       }
     ]
   }

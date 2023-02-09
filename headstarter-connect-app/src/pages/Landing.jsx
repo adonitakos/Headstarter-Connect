@@ -11,7 +11,7 @@ function Landing() {
                 <Card.Img variant="top" src="homepage.jpg"/>
             </div>
             <br />
-            <p className="mx-auto d-flex h4 col-md-3 text-center text-secondary" style={{ lineHeight: '2em' }}>
+            <p className="mx-auto d-flex h4 text-center text-secondary justify-content-center" style={{ lineHeight: '2em' }}>
                 Welcome to Headstarter Connect!
             </p>
             <br />
