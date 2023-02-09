@@ -1,17 +1,23 @@
 // File: /src/pages/Landing.js
-
-import React from "react";
+import Card from 'react-bootstrap/Card'
 
 function Landing() {
-
     return (
-    <>
-        <h1 style={{textAlign:'center', color:'#3D56F0', fontWeight:'800'}}>Welcome to the Landing Page!</h1>
-        <h2><a href="/auth/login">Login</a> if you already have an account!</h2>
-        <h2><a href="/auth/register">Register</a> for an account if you do NOT already have one</h2>
-    </>
-    );
-
-} // <--- Landing() function ends here
+    <div className="container pb-5 mb-5">
+        <div>
+            <h1 className="display-4 text-primary mx-auto d-flex justify-content-center col-md-7">Home</h1>
+            <br />
+            <div className="col-md-4 rounded mx-auto d-block">
+                <Card.Img variant="top" src="homepage.jpg"/>
+            </div>
+            <br />
+            <p className="mx-auto d-flex h4 text-center text-secondary justify-content-center" style={{ lineHeight: '2em' }}>
+                Welcome to Headstarter Connect!
+            </p>
+            <br />
+        </div>
+    </div>
+  )
+}
 
 export default Landing;

@@ -1,25 +1,50 @@
-// File: /src/App.js
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// Pages:
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Landing from './pages/Landing' 
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+import Login from './pages/Login'
+import Profile from './pages/Profile'
+import Calendar from './pages/Calendar'
+import VideoChat from './pages/VideoChat'
+
+
+const HeaderLayout = () => (
+  <>
+    <Outlet />
+  </>
+)
+
+const router = createBrowserRouter([
+  {
+    element: <HeaderLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Landing />
+      },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/calendar',
+        element: <Calendar />
+      },
+      {
+        path: '/video_chat',
+        element: <VideoChat />
+      }
+    ]
+  }
+])
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Landing/>}/>
-          <Route path="/auth/register" element={<SignUp/>}/>
-          <Route path="/auth/login" element={<Login/>}/>
-          <Route path="/dashboard" element={<Dashboard/>}/>
-        </Routes>
-      </Router>
-    </>
+    <RouterProvider router={router} />
   );
 }
 
