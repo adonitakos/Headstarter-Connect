@@ -1,18 +1,29 @@
-// File: /src/App.js
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Landing from './pages/Landing' 
+
+const HeaderLayout = () => (
+  <>
+    <Outlet />
+  </>
+)
+
+const router = createBrowserRouter([
+  {
+    element: <HeaderLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Landing />
+      }
+    ]
+  }
+])
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Landing/>}/>
-        </Routes>
-      </Router>
-    </>
+    <RouterProvider router={router} />
   );
 }
 
