@@ -40,7 +40,7 @@ function SignUp() {
         })
     }
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} style={{zoom:'110%'}}>
             {errorMessage !== '' && <Alert variant="danger">{errorMessage}</Alert>}
             <AuthContainer>
                 <AuthBanner>Sign Up</AuthBanner>

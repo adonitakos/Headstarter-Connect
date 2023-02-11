@@ -6,7 +6,11 @@ function Profile() {
     return (
         <div className="container">
             <div>
-                <h1 className="display-4 text-primary mx-auto d-flex justify-content-center col-md-7">Profile</h1>
+                <h1 className="display-4 text-primary mx-auto d-flex justify-content-center col-md-7"
+                    style={{marginTop:'20px', fontFamily:'Poppins', fontWeight:'700'}}
+                >
+                    Profile
+                </h1>
                 <br />
                 <div className="col-md-2 rounded mx-auto d-block">
                     <Card.Img variant="top" src="https://fakeimg.pl/100x100/?text=PROFILE IMG"/>

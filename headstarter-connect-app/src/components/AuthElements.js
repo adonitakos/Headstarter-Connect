@@ -19,7 +19,9 @@ export const AuthBanner = styled.h1 `
     font-size: 40px;
     line-height: 60px;
     color: #FFFFFF;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
 `;
 
 // Input fields for Email, Password, etc. (they will have placholders for clarification)
@@ -38,6 +40,7 @@ export const AuthInput = styled.input`
 export const AuthButton = styled.button `
     width: 179px;
     height: 61px;
+    margin-top: 5rem;
 
     background: #E6E6E6;
     border-radius: 73px;

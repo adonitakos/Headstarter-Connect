@@ -23,12 +23,12 @@ function Login() {
         })
     }
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} style={{zoom:'120%'}}>
             {errorMessage !== '' && <Alert variant="danger">{errorMessage}</Alert>}
-            <AuthContainer>
+            <AuthContainer style={{height:'400px'}}>
                 <AuthBanner className="mx-auto d-flex justify-content-center">Login</AuthBanner>
                 <Form.Group className="mx-auto d-flex justify-content-center mb-2">
-                    <AuthInput type="text" placeholder="Email Address" onChange={(e) => { setEmail(e.target.value) }} style={{ width: "410px" }} required />
+                    <AuthInput type="text" placeholder="Email Address" onChange={(e) => { setEmail(e.target.value) }} style={{ width: "410px", marginBottom:'2rem' }} required />
                 </Form.Group>
                 <Form.Group className="mx-auto d-flex justify-content-center mb-2">
                     <AuthInput type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} style={{ width: "410px" }} required />       
