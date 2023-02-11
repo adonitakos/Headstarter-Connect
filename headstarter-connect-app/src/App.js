@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Calendar from './pages/Calendar'
 import VideoChat from './pages/VideoChat'
+// import { UserProvider } from './config/user'
 
 const HeaderLayout = () => (
   <>
@@ -49,10 +50,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>    
+    <> {/*<UserProvider>*/}
       <NavigationBar />
       <RouterProvider router={router} />
-    </>
+    {/*</UserProvider>*/} </>
 
   );
 } // <--- App() ends here
