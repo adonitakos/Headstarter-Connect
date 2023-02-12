@@ -1,19 +1,56 @@
-// File: /src/pages/Calendar.js
+import React, { useState, useEffect } from 'react';
+import Calendar from 'react-calendar';
+import firebase from '../src/config/firebaseconfig';
 
-function Calendar() {
-    return (
-        <div className="container">
-            <div>
-                <h1 className="display-4 text-primary mx-auto d-flex justify-content-center col-md-7">Calendar</h1>
-                <br />
-                <p className="text-primary mx-auto d-flex text-center justify-content-center" style={{ lineHeight: '2em' }}>
-                    Idk what to put here.
-                </p>
-                <br />
-            </div>
-        </div>
+function CalendarPage() {
+  const [date, setDate] = useState(new Date());
+  const [notes, setNotes] = useState({});
+  const db = firebase.database().ref('notes');
+
+  useEffect(() => {
+    db.on('value', (snapshot) => {
+      setNotes(snapshot.val());
+    });
+  }, []);
+
+  function handleDateClick(clickedDate) {
+    setDate(clickedDate);
+    const note = window.prompt(
+      `Enter note for ${clickedDate.toDateString()}`,
+      '',
+      'background-color: #ffffff; border: 1px solid #333'
     );
+    if (note) {
+      setNotes({ ...notes, [clickedDate.toDateString()]: note });
+      saveNoteToDb(clickedDate.toDateString(), note);
+    }
+  }
 
+  function saveNoteToDb(date, note) {
+    db.child(date).set({
+      note,
+    });
+  }
+
+  return (
+    <div className="d-flex h-100" style={{ backgroundColor: '#f2f2f2' }}>
+      <div className="align-self-center mx-auto">
+        <h1 className="display-4 text-primary text-center mb-4">Headstarter</h1>
+        <Calendar
+          onClickDay={handleDateClick}
+          onChange={(newDate) => setDate(newDate)}
+          value={date}
+          view="month"
+        />
+        {Object.keys(notes).includes(date.toDateString()) && (
+          <p className="text-primary text-center mt-4">
+            Your message: {notes[date.toDateString()]}<br />
+            Date written: {date.toDateString()}
+          </p>
+        )}
+      </div>
+    </div>
+  );
 }
 
-export default Calendar;
+export default CalendarPage;
