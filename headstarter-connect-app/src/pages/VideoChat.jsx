@@ -1,19 +1,34 @@
 // File: /src/pages/VideoChat.jsx
 
+import React, { useState } from "react";
+import { Button } from '@mui/material';
+import VideoCall from "../components/VideoComponents/VideoCall";
+
 function VideoChat() {
+
+    const [inCall, setInCall] = useState(false);
+
     return (
-        <div className="container">
-            <div>
-                <h1 className="display-4 text-primary mx-auto d-flex justify-content-center col-md-7">VideoChat</h1>
-                <br />
-                <p className="text-primary mx-auto d-flex text-center justify-content-center" style={{ lineHeight: '2em' }}>
-                    Idk what to put here.
-                </p>
-                <br />
-            </div>
+        <div className='VideoChat' style={{ height:'100%' }}>
+            {inCall ?  (
+            <VideoCall setInCall={ setInCall } /> 
+            ) : (
+                <Button 
+                    varaint="contained" 
+                    color="primary" 
+                    onClick={() => {setInCall(true)}}
+                    style={{
+                        backgroundColor: '#3D56F0',
+                        color:'white',
+                        margin:'10px'
+                    }}
+                >   
+                    Join Call
+                </Button> 
+            )}   
         </div>
     );
 
-}
+} // <--- VideoChat() function ends here
 
 export default VideoChat;
