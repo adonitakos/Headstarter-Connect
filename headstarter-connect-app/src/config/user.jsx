@@ -1,19 +1,10 @@
 import { doc, onSnapshot } from 'firebase/firestore'
 import { createContext, useContext, useEffect, useState } from 'react'
-import { auth, db } from './firebase'
+import { auth, db } from './firebaseconfig'
 
-// Set unique types
-const User = {
-    id: "",
-    email: ""
-}
-const UserState = {
-    user: User | null
-}
 // Context allows child components to access info from the parent component
 // Might be useful for making the navbar or when a user accesses a certain page...
-const UserContext = createContext(UserState({ user: null }))
-
+export const UserContext = createContext({ user: null })
 
 export function useUser () {
   return useContext(UserContext)
@@ -21,7 +12,7 @@ export function useUser () {
 
 export function UserProvider ({ children }) {
   const [user, setUser] = useCachedState('user', auth.currentUser)
-  const [state, setState] = useCachedState(UserState('state', { user: null }))
+  const [state, setState] = useCachedState('state', { user: null })
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => { setUser(user) })

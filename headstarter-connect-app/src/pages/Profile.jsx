@@ -1,8 +1,11 @@
 // File: /src/pages/Profile.jsx
 
 import Card from 'react-bootstrap/Card'
+import React, { useContext } from "react";
+import { UserContext } from '../config/user'
 
 function Profile() {
+    const userInfo=useContext(UserContext).user
     return (
         <div className="container">
             <div>
@@ -13,15 +16,14 @@ function Profile() {
                 </h1>
                 <br />
                 <div className="col-md-2 rounded mx-auto d-block">
-                    <Card.Img variant="top" src="https://fakeimg.pl/100x100/?text=PROFILE IMG"/>
+                    <Card.Img variant="top" src="profile.jpg"/>
                 </div>
                 <div className="mb-3 col-md-5 mx-auto justify-content-center">
                     <br />
-                    <i>Example</i><br />
-                    <b>Name</b>: Michael Salamon<br />
-                    <b>Squid #</b> 52<br />
-                    <b>Group</b>: Awesome Legit Coders<br />
-                    <b>Teammates</b>: Antonios Takos | 426, Andreas Constantinou | 412<br />
+                    <p className="col-md-3 rounded mx-auto d-block"><b>Name</b>: {userInfo.name}</p>
+                    <p className="col-md-3 rounded mx-auto d-block"><b>Squid #</b> {userInfo.squidNum}</p>
+                    <p className="col-md-3 rounded mx-auto d-block"><b>Group</b>: {userInfo.groupName}</p>
+                    <p className="col-md-3 rounded mx-auto d-block"><b>Teammates</b>: Antonios Takos | 426, Andreas Constantinou | 412</p>
                 </div>
             </div>
         </div>

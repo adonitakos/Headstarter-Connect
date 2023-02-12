@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React from "react";
+import React, { useContext } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import NavigationBar from './components/Navbar/Navbar'
 import Landing from './pages/Landing' 
@@ -8,7 +8,7 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Calendar from './pages/Calendar'
 import VideoChat from './pages/VideoChat'
-// import { UserProvider } from './config/user'
+import { UserProvider } from './config/user'
 
 const HeaderLayout = () => (
   <>
@@ -50,10 +50,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <> {/*<UserProvider>*/}
+    <UserProvider>
       <NavigationBar />
       <RouterProvider router={router} />
-    {/*</UserProvider>*/} </>
+    </UserProvider>
 
   );
 } // <--- App() ends here
