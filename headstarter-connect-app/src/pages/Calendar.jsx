@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
-import firebase from '../src/config/firebaseconfig';
+import db from '../config/firebaseconfig';
 
 function CalendarPage() {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState({});
-  const db = firebase.database().ref('notes');
+  const db = db.database().ref('notes');
 
   useEffect(() => {
     db.on('value', (snapshot) => {
