@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useContext } from "react";
+import React from "react";
 import { createBrowserRouter, Outlet, RouterProvider, redirect } from 'react-router-dom';
 import NavigationBar from './components/Navbar/Navbar'
 import Landing from './pages/Landing' 
