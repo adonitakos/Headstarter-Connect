@@ -5,8 +5,12 @@ import React, { useContext } from "react";
 import { UserContext } from '../config/user'
 
 function Profile() {
-    const userInfo=useContext(UserContext)[0].user
-    const teamInfo=useContext(UserContext)[1]
+    let userInfo=useContext(UserContext)[0].user
+    let teamInfo=useContext(UserContext)[1]
+    if(userInfo===null || teamInfo===null) {
+        userInfo={"name":"","squidNum":"","groupName":""}
+        teamInfo=""        
+    }
     return (
         <div className="container">
             <div>

@@ -44,9 +44,11 @@ export function UserProvider ({ children }) {
         // console.log(state.user.groupName);
       })
       // get the list of members from collection groups
-      onSnapshot(doc(db, 'groups', state.user.groupName), doc => {
-        setGroupMembs(doc.data().members);
-      })
+      if(state.user !== null) {
+        onSnapshot(doc(db, 'groups', state.user.groupName), doc => {
+          setGroupMembs(doc.data().members);
+        })
+      }
 
       return () => { unsubscribe() }
       } else {
