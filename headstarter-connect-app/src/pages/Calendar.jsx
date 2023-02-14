@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import {db, auth} from '../config/firebaseconfig';
+import db from '../config/firebaseconfig';
 
 function CalendarPage() {
   const [date, setDate] = useState(new Date());

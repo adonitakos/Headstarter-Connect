@@ -1,6 +1,6 @@
 // File: /src/config/agoraConfig.js
 
-import { createClient, createMicrophoneAndCameraTracks  } from 'agora-rtc-react'
+import { createClient, createMicrophoneAndCameraTracks } from 'agora-rtc-react'
 
 const appId = "80ba2d3f3b2b43ecb2113e786208b3e1";
 const token = "007eJxTYLCbMm27RoV6RGrXin4F2VNqOWJRB/rCLjh8nb+SOyuFOVOBwcIgKdEoxTjNOMkoycQ4NTnJyNDQONXcwszIwCLJONXw1uVXyQ2BjAy9j/YxMTJAIIjPwpCbmJnHwAAA2VofCA=="

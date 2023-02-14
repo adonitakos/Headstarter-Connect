@@ -1,6 +1,4 @@
 [] Implement requirement for user authentication in VideoChat and Calendar
-[] Create Logout function
-[] Modify Navbar to show necessary NavLinks for logged out and logged in user
 [] Create video_chat rooms based on group (kill me)
 [] Create calendars based on groups
 

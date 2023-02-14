@@ -5,7 +5,12 @@ import React, { useContext } from "react";
 import { UserContext } from '../config/user'
 
 function Profile() {
-    const userInfo=useContext(UserContext).user
+    let userInfo=useContext(UserContext)[0].user
+    let teamInfo=useContext(UserContext)[1]
+    if(userInfo===null || teamInfo===null) {
+        userInfo={"name":"","squidNum":"","groupName":""}
+        teamInfo=""        
+    }
     return (
         <div className="container">
             <div>
@@ -23,7 +28,7 @@ function Profile() {
                     <p className="col-md-3 rounded mx-auto d-block"><b>Name</b>: {userInfo.name}</p>
                     <p className="col-md-3 rounded mx-auto d-block"><b>Squid #</b> {userInfo.squidNum}</p>
                     <p className="col-md-3 rounded mx-auto d-block"><b>Group</b>: {userInfo.groupName}</p>
-                    <p className="col-md-3 rounded mx-auto d-block"><b>Teammates</b>: Antonios Takos | 426, Andreas Constantinou | 412</p>
+                    <p className="col-md-3 rounded mx-auto d-block"><b>Teammates</b>: {teamInfo}</p>
                 </div>
             </div>
         </div>
