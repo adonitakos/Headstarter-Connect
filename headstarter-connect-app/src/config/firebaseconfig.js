@@ -22,4 +22,4 @@ const app = initializeApp(firebaseConfig);
 
 // export for use in React
 export const auth = getAuth(app);
-export const db = getFirestore(app);
+export constdb = getFirestore(app);
