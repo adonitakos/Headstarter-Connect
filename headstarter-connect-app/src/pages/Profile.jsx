@@ -7,9 +7,11 @@ import { UserContext } from '../config/user'
 function Profile() {
     let userInfo=useContext(UserContext)[0].user
     let teamInfo=useContext(UserContext)[1]
-    if(userInfo===null || teamInfo===null) {
+    let availInfo=useContext(UserContext)[2]
+    if(userInfo===null || teamInfo===null || availInfo.length===0) {
         userInfo={"name":"","squidNum":"","groupName":""}
-        teamInfo=""        
+        teamInfo=""
+        availInfo=[{}]        
     }
     return (
         <div className="container">
@@ -31,6 +33,8 @@ function Profile() {
                     <p className="col-md-3 rounded mx-auto d-block"><b>Teammates</b>: {teamInfo}</p>
                 </div>
             </div>
+            <p className="h5 text-primary rounded mx-auto d-flex justify-content-center">TEAM AVAILABILITIES</p>
+            <p className="col-md-5 h5 rounded mx-auto d-block">{JSON.stringify(availInfo, null, 2)}</p>
         </div>
     );
 
