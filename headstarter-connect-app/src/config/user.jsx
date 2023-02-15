@@ -1,7 +1,7 @@
 import { doc, onSnapshot, collection } from 'firebase/firestore'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from './firebaseconfig'
-import createAvabls from './utils.js'
+import { createAvabls } from './utils.js'
 
 // Context allows child components to access info from the parent component
 // Might be useful for making the navbar or when a user accesses a certain page...
