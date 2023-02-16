@@ -26,7 +26,6 @@ export default function VideoCall(props) {
                       user.audioTrack.play();
                 }
                   
-                  
             }); // <--- user-published ends here
 
             client.on("user-unpublished", (user, mediaType) => {

@@ -1,0 +1,6 @@
+[] Implement requirement for user authentication in VideoChat and Calendar
+[] Create video_chat rooms based on group (kill me)
+[] Create calendars based on groups
+
+[] Minor styling modifications; using Poppins and purple(w/ some blue ) color scheme to match Headstarter look
+[] Create favicon.ico using Headstarter logo

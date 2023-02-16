@@ -74,8 +74,7 @@ export default function Controls(props) {
             </Grid>
        
         </Grid>
-
-
+        
     ) // <--- return() ends here
 
 } // <--- Controls() function ends here

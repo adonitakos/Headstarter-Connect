@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useContext } from "react";
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import React from "react";
+import { createBrowserRouter, Outlet, RouterProvider, redirect } from 'react-router-dom';
 import NavigationBar from './components/Navbar/Navbar'
 import Landing from './pages/Landing' 
 import SignUp from './pages/SignUp';
@@ -9,9 +9,11 @@ import Profile from './pages/Profile'
 import Calendar from './pages/Calendar'
 import VideoChat from './pages/VideoChat'
 import { UserProvider } from './config/user'
+import { auth } from './config/firebaseconfig'
 
 const HeaderLayout = () => (
   <>
+    <NavigationBar />
     <Outlet />
   </>
 ) // <--- HeaderLayout() ends here
@@ -43,6 +45,13 @@ const router = createBrowserRouter([
       {
         path: '/video_chat',
         element: <VideoChat />
+      },
+      {
+        path: '/sign_out',
+        loader: async () => {
+          await auth.signOut()
+          return redirect('/')
+        }
       }
     ]
   } // <--- routes JSON object ends here
@@ -51,7 +60,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <UserProvider>
-      <NavigationBar />
       <RouterProvider router={router} />
     </UserProvider>
 
