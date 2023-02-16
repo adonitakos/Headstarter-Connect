@@ -3,20 +3,14 @@
 import Card from 'react-bootstrap/Card'
 import React, { useContext } from "react";
 import { UserContext } from '../config/user'
-import { overlapAvabls } from '../config/utils'
 
 function Profile() {
     let userInfo=useContext(UserContext)[0].user
     let teamInfo=useContext(UserContext)[1]
-    let availInfo=useContext(UserContext)[2]
-    if(userInfo===null || teamInfo===null || availInfo.length===0) {
+    if(userInfo===null || teamInfo===null) {
         userInfo={"name":"","squidNum":"","groupName":""}
-        teamInfo=""
-        availInfo=[{}]        
+        teamInfo=""       
     }
-    let meetInfo={}
-    if(availInfo.length>=1)
-        meetInfo=overlapAvabls(availInfo)
     return (
         <div className="container">
             <div>
@@ -37,10 +31,6 @@ function Profile() {
                     <p className="col-md-3 rounded mx-auto d-block"><b>Teammates</b>: {teamInfo}</p>
                 </div>
             </div>
-            <p className="h5 text-primary rounded mx-auto d-flex justify-content-center">MEMBER AVAILABILITIES</p>
-            <p className="col-md-5 h5 rounded mx-auto d-block">{JSON.stringify(availInfo, null, 2)}</p>
-            <p className="h5 text-primary rounded mx-auto d-flex justify-content-center">MEETING TIMES</p>
-            <p className="col-md-5 h5 rounded mx-auto d-block">{JSON.stringify(meetInfo, null, 2)}</p>
         </div>
     );
 
