@@ -1,4 +1,8 @@
+/*
+File: /src/components/Navbar/Navbar.css
+*/
+
 .navbar-brand:hover {
     transform: scale(0.90);
-  }
+}
   

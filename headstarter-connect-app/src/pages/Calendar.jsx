@@ -1,9 +1,22 @@
+// File: /src/pages/Calendar.jsx
+
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../config/user';
 
 function CalendarPage() {
+
+  const [state, team] = useUser();
+  const navigate = useNavigate();
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState({});
+
+// Make it so only logged in users can access this page
+  if (!state.user) {
+    navigate('/auth/login'); // Redirect the user to the login page
+    return null; // Don't render anything
+  }
 
   function handleDateClick(clickedDate) {
     setDate(clickedDate);
@@ -11,12 +24,12 @@ function CalendarPage() {
     if (note) {
       setNotes({ ...notes, [clickedDate.toDateString()]: note });
     }
-  }
+  } // <--- handleDateClick() function ends here
 
   return (
-    <div className="d-flex h-100" style={{ backgroundColor: '#f2f2f2' }}>
+    <div className="d-flex h-100" style={{fontFamily:'Poppins, sans-serif', marginTop:'-12rem'}}>
       <div className="align-self-center mx-auto">
-        <h1 className="display-4 text-primary text-center mb-4">Headstarter</h1>
+        <h1 className="display-4 text-primary text-center mb-4" style={{fontWeight:'700'}}>Team Calendar</h1>
         <Calendar
           onClickDay={handleDateClick}
           onChange={(newDate) => setDate(newDate)}
@@ -32,6 +45,6 @@ function CalendarPage() {
       </div>
     </div>
   );
-}
+} // <--- CalendarPage() function ends here
 
 export default CalendarPage;

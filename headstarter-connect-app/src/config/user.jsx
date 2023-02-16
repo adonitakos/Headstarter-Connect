@@ -1,3 +1,5 @@
+// File: /src/config/user.jsx
+
 import { doc, onSnapshot, collection } from 'firebase/firestore'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from './firebaseconfig'
@@ -58,9 +60,7 @@ export function UserProvider ({ children }) {
       }
     }, [user])
     return <UserContext.Provider value={[state, team, avails]}>{children}</UserContext.Provider>
-  }
-
-
+  } // <--- UserProvider() function ends here
 
 function useCachedState (key, defaultValue) {
   const initialValue = (() => {

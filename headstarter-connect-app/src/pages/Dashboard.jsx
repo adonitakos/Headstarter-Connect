@@ -1,3 +1,5 @@
+// File: /src/pages/Dashboard.jsx
+
 import React from 'react';
 
 function Dashboard() {
