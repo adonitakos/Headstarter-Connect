@@ -2,7 +2,7 @@
 
 /**
  * find all equivalent key-value pairs from a list of objects
- * (NOTE: for the purposes of this function, ""==="any string")
+ * (NOTE: for the purposes of this function, " "==="any string")
  * @param  {array} list [list.length>=1]
  * @return {object} [key-value pairs that appeared in ALL objects]
  */
@@ -19,10 +19,10 @@ export function overlapAvabls(list) {
             for(let key in merged) {
                 if(!(key in obj))
                     delete merged[key];
-                else if(obj[key] === "")
+                else if(obj[key] === " ")
                     continue                    
                 else if(obj[key] !== merged[key]) {
-                    if(merged[key] === "")
+                    if(merged[key] === " ")
                         merged[key]=obj[key];
                     else
                         delete merged[key];
@@ -51,7 +51,7 @@ export function createAvabls(total) {
         for (let j = 0; j < listofKeys.length; j++) {
             const day = listofKeys[j].toString().padStart(2, "0");
             const key = `${month}_${day}_2023`;
-            const value = ["morning", "afternoon", "night", ""][Math.floor(Math.random() * 4)];
+            const value = ["morning", "afternoon", "night", " "][Math.floor(Math.random() * 4)];
             availability[key] = value;
         }
         availabilities.push(availability);

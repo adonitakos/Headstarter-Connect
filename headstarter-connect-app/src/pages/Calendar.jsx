@@ -10,17 +10,24 @@ import { overlapAvabls } from '../config/utils'
 
 function CalendarPage() {
   const userID=useContext(UserContext)[0].user.id
-  let availInfo=useContext(UserContext)[2]
-  if(availInfo.length===0)
-    availInfo=[{}]        
-  let meetInfo={}
-  if(availInfo.length>=1)
-    meetInfo=overlapAvabls(availInfo)
+  let groupMembs=useContext(UserContext)[2]     
+  if(groupMembs===null)
+    groupMembs=[]
 
   const [state, team] = useUser();
   const navigate = useNavigate();
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState({});
+  const [didNote, setDidNote] = useState(0);
+  // display at bottom of page
+  // const [availInfo, setAvailInfo] = useState([]);
+  // const [meetInfo, setMeetInfo] = useState({});
+  let availInfo=[]
+  let meetInfo={}
+  // display at bottom of page
+  const [favailInfo, setFAvailInfo] = useState("[]");
+  const [fmeetInfo, setFMeetInfo] = useState("{}");
+
 
   useEffect(() => {
     // Make it so only logged in users can access this page
@@ -28,9 +35,23 @@ function CalendarPage() {
       navigate('/auth/login'); // Redirect the user to the login page
       return null; // Don't render anything
     }
-    // otherwise, update the current availability
-    if(userID!==undefined && Object.keys(notes).length !== 0)
-      setDoc(doc(db, 'users', userID), {"availability":notes},{merge: true})
+    const unsubscribe = onSnapshot(doc(db, 'users', userID), () => {
+      // setDoc runs WAAYY 2 many times here!
+      /*if(userID!==undefined && Object.keys(notes).length !== 0) {
+        setDoc(doc(db, 'users', userID), {"availability":notes},{merge: true})      
+      }*/
+      let listAv=[];
+      groupMembs.map((groupMemb) => {
+        getDoc(doc(db, 'users', groupMemb)).then((doc) => {
+          listAv.push(doc.get('availability'))
+          console.log(listAv)
+          availInfo=listAv
+          meetInfo=overlapAvabls(listAv)
+          setFAvailInfo(JSON.stringify(availInfo, null, 2))
+          setFMeetInfo(JSON.stringify(meetInfo, null, 2))
+        }).catch((err) => {console.log(err)})
+      });
+    })
   })
 
   function clearSchdl() {
@@ -40,10 +61,12 @@ function CalendarPage() {
   function handleDateClick(clickedDate) {
     setDate(clickedDate);
     const note = window.prompt(`Enter note for ${clickedDate.toDateString()}`, '', 'background-color: #ffffff; border: 1px solid #333');
-    if(userID!==undefined)
-      getDoc(doc(db, 'users', userID)).then((doc) => console.log(doc.get('availability'))).catch((err) => {console.log(err)})
     if (note) {
       setNotes({ ...notes, [(clickedDate.getMonth()+1).toString().padStart(2, "0")+"_"+(clickedDate.getDate()).toString().padStart(2, "0")+"_"+String(clickedDate.getFullYear())]: note });
+      // setDoc also runs WAAYY 2 many times here! Can't win!
+
+      // unsubscribe()
+      setDidNote(didNote+1)
     };
   } // <--- handleDateClick() function ends here
 
@@ -68,9 +91,9 @@ function CalendarPage() {
       <br></br>
       <div>
         <p className="h5 text-primary rounded mx-auto d-flex justify-content-center">MEMBER AVAILABILITIES</p>
-        <p className="col-md-5 h5 rounded mx-auto d-block">{JSON.stringify(availInfo, null, 2)}</p>
+        <p className="col-md-5 h5 rounded mx-auto d-block">{favailInfo}</p>
         <p className="h5 text-primary rounded mx-auto d-flex justify-content-center">MEETING TIMES</p>
-        <p className="col-md-5 h5 rounded mx-auto d-block">{JSON.stringify(meetInfo, null, 2)}</p>
+        <p className="col-md-5 h5 rounded mx-auto d-block">{fmeetInfo}</p>
       </div>
     </div>
   );

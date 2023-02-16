@@ -18,7 +18,6 @@ export function UserProvider ({ children }) {
   const [state, setState] = useCachedState('state', { user: null })
   const [groupMembs, setGroupMembs] = useState([]);
   const [team, setTeam] = useState("");
-  const [avails, setAvails] = useState([{}]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => { setUser(user) })
@@ -26,10 +25,11 @@ export function UserProvider ({ children }) {
   })
 
   useEffect(() => {
-    if(groupMembs.length!==0) {
+    if(groupMembs.length!==0 && team==="") {
       let lookhere=" ";
       groupMembs.map((groupMemb) => {
         onSnapshot(doc(db, 'users', groupMemb), doc => {
+          // display for /profile
           lookhere=lookhere+" "+doc.data().name + " | " + String(doc.data().squidNum);
           setTeam(lookhere);
         })
@@ -38,7 +38,7 @@ export function UserProvider ({ children }) {
   })
 
   useEffect(() => {
-    if (user != null) {
+    if (user != null && Object.keys(state).length <= 2) {
       const unsubscribe = onSnapshot(doc(db, 'users', user.uid), doc => {
         setState({
           user: doc.data()
@@ -46,11 +46,9 @@ export function UserProvider ({ children }) {
         // console.log(state.user.groupName);
       })
       // get the list of members from collection groups
-      if(state.user !== null) {
+      if(state.user !== null && groupMembs.length===0 && state.user.groupName!==undefined) {
         onSnapshot(doc(db, 'groups', state.user.groupName), doc => {
           setGroupMembs(doc.data().members);
-          // availabilities are randomly generated rn for testing purposes!
-          setAvails(createAvabls((doc.data().members).length))
         })
       }
 
@@ -59,7 +57,7 @@ export function UserProvider ({ children }) {
         setState({ user: null })
       }
     }, [user])
-    return <UserContext.Provider value={[state, team, avails]}>{children}</UserContext.Provider>
+    return <UserContext.Provider value={[state, team, groupMembs]}>{children}</UserContext.Provider>
   } // <--- UserProvider() function ends here
 
 function useCachedState (key, defaultValue) {

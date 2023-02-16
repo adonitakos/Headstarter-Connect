@@ -33,7 +33,8 @@ function SignUp() {
                 email: user.email,
                 name: name,
                 squidNum: squidNum,
-                groupName: aptGName
+                groupName: aptGName,
+                availability: {}
             }
             // groups
             const allMembers = await getDoc(doc(db, 'groups', aptGName))
