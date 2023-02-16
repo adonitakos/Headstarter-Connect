@@ -1,35 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import firebase from '../src/config/firebaseconfig';
 
 function CalendarPage() {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState({});
-  const db = firebase.database().ref('notes');
-
-  useEffect(() => {
-    db.on('value', (snapshot) => {
-      setNotes(snapshot.val());
-    });
-  }, []);
 
   function handleDateClick(clickedDate) {
     setDate(clickedDate);
-    const note = window.prompt(
-      `Enter note for ${clickedDate.toDateString()}`,
-      '',
-      'background-color: #ffffff; border: 1px solid #333'
-    );
+    const note = window.prompt(`Enter note for ${clickedDate.toDateString()}`, '', 'background-color: #ffffff; border: 1px solid #333');
     if (note) {
       setNotes({ ...notes, [clickedDate.toDateString()]: note });
-      saveNoteToDb(clickedDate.toDateString(), note);
     }
-  }
-
-  function saveNoteToDb(date, note) {
-    db.child(date).set({
-      note,
-    });
   }
 
   return (
