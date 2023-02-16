@@ -59,7 +59,7 @@ function SignUp() {
     return (
         <Form onSubmit={handleSubmit} style={{zoom:'110%'}}>
             {errorMessage !== '' && <Alert variant="danger">{errorMessage}</Alert>}
-            <AuthContainer>
+            <AuthContainer style={{marginTop:'70px'}}>
                 <AuthBanner>Sign Up</AuthBanner>
                 <Form.Group className="mx-auto d-flex justify-content-center mb-2">
                     <AuthInput type="text" placeholder="Email Address" onChange={(e) => { setEmail(e.target.value) }} style={{ width: "410px" }} required />

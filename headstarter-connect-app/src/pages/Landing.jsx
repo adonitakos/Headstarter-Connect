@@ -5,7 +5,12 @@ function Landing() {
     return (
     <div className="container pb-5 mb-5">
         <div>
-            <h1 className="display-4 text-primary mx-auto d-flex justify-content-center col-md-7">Home</h1>
+            <h1 
+            className="display-4 text-primary mx-auto d-flex justify-content-center col-md-7"
+            style={{fontFamily:'Poppins', fontWeight:'600', marginTop:'25px'}}
+            >
+                    Home
+            </h1>
             <br />
             <div className="col-md-4 rounded mx-auto d-block">
                 <Card.Img variant="top" src="homepage.jpg"/>

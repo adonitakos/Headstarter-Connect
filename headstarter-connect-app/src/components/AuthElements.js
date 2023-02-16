@@ -52,4 +52,8 @@ export const AuthButton = styled.button `
 
     font-family: 'Poppins';
     font-style: normal;
+
+    &:hover {
+        transform: scale(0.90);
+    }
 `;

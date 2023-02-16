@@ -1,3 +1,5 @@
+// File: /src/components/Navbar.js
+
 import React, { useContext } from "react";
 import { UserContext } from '../../config/user'
 import { Link } from 'react-router-dom'
@@ -5,6 +7,7 @@ import logo from '../../images/Headstarter-logo.png'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import './Navbar.css'
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavigationBar() {

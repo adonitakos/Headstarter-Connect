@@ -25,7 +25,7 @@ function Login() {
     return (
         <Form onSubmit={handleSubmit} style={{zoom:'120%'}}>
             {errorMessage !== '' && <Alert variant="danger">{errorMessage}</Alert>}
-            <AuthContainer style={{height:'400px'}}>
+            <AuthContainer style={{height:'400px', marginTop:'6rem'}}>
                 <AuthBanner className="mx-auto d-flex justify-content-center">Login</AuthBanner>
                 <Form.Group className="mx-auto d-flex justify-content-center mb-2">
                     <AuthInput type="text" placeholder="Email Address" onChange={(e) => { setEmail(e.target.value) }} style={{ width: "410px", marginBottom:'2rem' }} required />
