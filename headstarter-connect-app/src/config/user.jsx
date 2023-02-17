@@ -46,7 +46,7 @@ export function UserProvider ({ children }) {
         // console.log(state.user.groupName);
       })
       // get the list of members from collection groups
-      if(state.user !== undefined && groupMembs.length===0 && state.user.groupName!==undefined) {
+      if(state.user !== undefined && state.user !== null && groupMembs.length===0 && state.user.hasOwnProperty('groupName')) {
         onSnapshot(doc(db, 'groups', state.user.groupName), doc => {
           setGroupMembs(doc.data().members);
         })
