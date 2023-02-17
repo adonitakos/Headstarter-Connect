@@ -82,3 +82,48 @@ export default function VideoCall(props) {
     );
 
 } // <--- VideoCall() function ends here
+
+// export default function VideoCall(props) {
+//     const { setInCall } = props;
+//     const [users, setUsers] = useState([]);
+//     const [start, setStart] = useState(false);
+//     const client = useClient();
+//     const { ready, tracks } = useMicrophoneAndCameraTracks();
+  
+//     useEffect(() => {
+//       let init = async (name) => {
+//         // ...
+  
+//         client.on("user-unpublished", (user, mediaType) => {
+//           // ...
+//         });
+  
+//         await client.join(config.appId, channelName, null, null);
+//         await client.publish([tracks[0], tracks[1]]);
+  
+//         setStart(true);
+//       };
+  
+//       if (ready) {
+//         init();
+//       }
+  
+//       return () => {
+//         client.leave();
+//       };
+//     }, [client, ready, tracks]);
+  
+//     return (
+//       <div>
+//         {start ? (
+//           <>
+//             <Video users={users} tracks={tracks} />
+//             <Controls tracks={tracks} setStart={setStart} setInCall={setInCall} />
+//           </>
+//         ) : (
+//           <p>Waiting for tracks...</p>
+//         )}
+//       </div>
+//     );
+//   }
+  
