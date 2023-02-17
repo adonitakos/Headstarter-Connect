@@ -21,7 +21,7 @@ Headstarter is a software engineering accelerator program that places a strong e
 JavaScript React
 
 
-## Team
+# Team
 |    **Member**    |           **GitHub**          |
 |:----------------:|:-----------------------------:|
 | Antonios Takos | https://github.com/adonitakos |  
