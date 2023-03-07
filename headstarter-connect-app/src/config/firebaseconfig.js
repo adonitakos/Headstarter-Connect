@@ -9,12 +9,12 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDpzhzNbQH5fKesJpRBS8PhIMByn2RXRB4",
+  apiKey: "AIzaSyDCj2t-NIFjJIHzvATG9hOezVUmj-fyvV0",
   authDomain: "headstarter-connect.firebaseapp.com",
   projectId: "headstarter-connect",
   storageBucket: "headstarter-connect.appspot.com",
   messagingSenderId: "518236808134",
-  appId: "1:518236808134:web:49f343b62560a999cb48c7"
+  appId: "1:518236808134:web:ae666c1b86121c1bcb48c7"
 };
 
 // Initialize Firebase
@@ -23,3 +23,4 @@ const app = initializeApp(firebaseConfig);
 // export for use in React
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
