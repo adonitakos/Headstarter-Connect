@@ -15,11 +15,11 @@ Headstarter is a software engineering accelerator program that places a strong e
 - Agora
 
 # How to run
-```npm start```
+```npm install``` <--- to install dependencies <br />
+```npm start```   <---- to run on localhost:3000
 
-# Languages
-JavaScript React
-
+# Demo
+https://drive.google.com/file/d/1Yv_wIHEOzVZoQLzQhrybIl2HQIwr-Kzd/view?usp=sharing
 
 # Team
 |    **Member**    |           **GitHub**          |
